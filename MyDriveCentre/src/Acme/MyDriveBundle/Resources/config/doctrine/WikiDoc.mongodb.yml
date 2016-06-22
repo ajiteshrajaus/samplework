@@ -1,0 +1,23 @@
+Acme\MyDriveBundle\Document\WikiDoc:
+    repositoryClass: Acme\MyDriveBundle\Repository\WikiDocRepository
+    fields:
+        id:
+            id: true
+        content:
+            type: string
+        docName:
+            type: string
+        companyId:
+            type: int
+        docNo:
+            type: string
+        userId:
+            type: int
+        lock:
+            type: string
+        autoSave:
+            type: object_id
+        isDraftCopy:
+            type: string
+        parent:
+            type: object_id

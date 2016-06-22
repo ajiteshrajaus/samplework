@@ -1,0 +1,87 @@
+acme_my_drive_homepage:
+    pattern:  /home/
+    defaults: { _controller: AcmeMyDriveBundle:Default:index }
+
+_user_new:
+    path:     /newUser/
+    defaults: { _controller: AcmeMyDriveBundle:Default:newUser}
+
+_user_new_welcome:
+    path:     /welcome/{parentId}
+    defaults: { _controller: AcmeMyDriveBundle:Default:welcomeNewUser,parentId: NULL}
+
+_user_login:
+    path:     /login/
+    defaults: { _controller: AcmeMyDriveBundle:Default:index}
+
+_file_upload:
+    path:     /fileUploadSuccess/{parentId}
+    defaults: { _controller: AcmeMyDriveBundle:Default:fileUpload,parentId: NULL}
+
+view_file_doc:
+    path:     /uploadedFile/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:fileUploadView}
+
+delete_file_doc:
+    path:     /deleteFile/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:fileDelete}
+
+create_wiki_doc:
+    path:     /createNewWiki/{parentId}
+    defaults: { _controller: AcmeMyDriveBundle:Default:createNewWiki,parentId: NULL}
+
+save_new_wiki_doc:
+    path:     /newWikiSave/
+    defaults: { _controller: AcmeMyDriveBundle:Default:createNewWiki}
+
+view_wiki_doc:
+    path:     /viewWiki/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:viewWikiDoc}
+
+delete_wiki_doc:
+    path:     /deleteWiki/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:deleteWikiDoc}
+
+login_page:
+    path:     /
+    defaults: { _controller: AcmeMyDriveBundle:Default:loginPage}
+
+create_new_folder:
+    path:     /newFolder/{parentId}
+    defaults: { _controller: AcmeMyDriveBundle:Default:createFolder,parentId: NULL}
+
+delete_folder_doc:
+    path:     /deleteFolder/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:deleteFolderDoc}
+
+_edit_wiki_doc:
+    path:     /editWiki/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:editWiki}
+
+_edit_save_wiki:
+    path:     /editWikiSave/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:saveEditWiki}
+
+logout:
+    path:     /logout
+    defaults: { _controller: AcmeMyDriveBundle:Default:logout}
+
+unlock_wiki:
+    path:     /unlockWiki/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:unlockWiki}
+
+load_draft:
+    path:     /loadDraft/{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:loadDraft}
+
+load_newWiki_draft:
+    path:     /loadNewWikiDraft/{id}/{parentId}
+    defaults: { _controller: AcmeMyDriveBundle:Default:loadNewWikiDraft,parentId: NULL}
+
+rename_file:
+    path:     /renameFile
+    defaults: { _controller: AcmeMyDriveBundle:Default:renameFile}
+
+view_folder_doc:
+    path:     /{id}
+    defaults: { _controller: AcmeMyDriveBundle:Default:viewFolder}

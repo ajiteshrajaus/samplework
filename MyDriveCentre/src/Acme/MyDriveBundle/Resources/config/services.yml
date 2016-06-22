@@ -1,0 +1,7 @@
+parameters:
+#    acme_my_drive.example.class: Acme\MyDriveBundle\Example
+
+services:
+#    acme_my_drive.example:
+#        class: %acme_my_drive.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

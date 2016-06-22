@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/MyDrive/css/style.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+
+<div id="wrap">
+
+    <div id="regbar">
+        <h2>My Drive Central</h2>
+    </div>
+    <div id="navthing">
+        <div class="error">
+            {% if error is defined %}
+                {{ error }}
+            {% endif %}
+        </div>
+        <h2><a href="#" id="loginform">Login</a> | <a href="#" id="registerform">Register</a></h2>
+        <div class="login">
+            <div class="arrow-up"></div>
+            <div class="formholder">
+                <div class="randompad">
+                    <fieldset>
+                        <form name="login" id="login" action="{{ path('_user_login') }}" method="post">
+                            <label name="email">Email</label>
+                            <input type="email" name="userName" />
+                            <label name="password">Password</label>
+                            <input type="password"  name="password" />
+                            <input type="submit" value="Login" />
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="register">
+            <div class="arrow-up-register"></div>
+            <div class="formholder">
+                <div class="randompad">
+                    <fieldset>
+                        <form name="register" id="register" action="{{ path('_user_new') }}" method="post">
+                            <label name="firstName">First Name</label>
+                            <input type="text" name="firstName" value="" />
+                            <label name="email">Email</label>
+                            <input type="email" name="userName" value="" />
+                            <label name="password">Password</label>
+                            <input type="password" name="password" />
+                            <label name="confirmPassword">Confirm Password</label>
+                            <input type="password" />
+                            <input type="submit" value="Register" />
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="footer">
+
+        <div class="footertxt">
+            <a href="mailto:r_ajitesh@yahoo.com?Subject=Feedback For Drive central">Ajitesh Raj</a>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+        <script src="{{ asset('bundles/MyDrive/js/index.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+{% endblock %}
+			

@@ -1,0 +1,11 @@
+Acme\MyDriveBundle\Document\FolderDoc:
+    repositoryClass: Acme\MyDriveBundle\Repository\FolderDocRepository
+    fields:
+        id:
+            id: true
+        folderName:
+            type: string
+        userId:
+            type: int
+        parent:
+            type: object_id

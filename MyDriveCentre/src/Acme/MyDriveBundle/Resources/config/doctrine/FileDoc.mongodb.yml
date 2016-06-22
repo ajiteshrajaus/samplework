@@ -1,0 +1,25 @@
+Acme\MyDriveBundle\Document\FileDoc:
+    repositoryClass: Acme\MyDriveBundle\Repository\FileDocRepository
+    fields:
+        id:
+            id: true
+        file:
+            type: file
+        filename:
+            type: string
+        mimeType:
+            type: string
+        uploadDate:
+            type: date
+        length:
+            type: int
+        chunkSize:
+            type: int
+        md5:
+            type: string
+        userId:
+            type: int
+        refrenceInWiki:
+            type: string
+        parent:
+            type: object_id

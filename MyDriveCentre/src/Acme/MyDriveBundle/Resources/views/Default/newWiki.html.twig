@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('bundles/MyDrive/css/style.css') }}" />
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div id="wrap">
+        <div class="logOut">
+            <a href="{{ path('logout' ) }}" class="button">Log Out</a>
+        </div>
+
+        <div id="regbar">
+            <h2>Create your Wiki here</h2>
+        </div>
+        <hr>
+        <div class="sideNav">
+            <ul class="navLinks">
+                <li>MyDrive</li>
+                <li>Shared With Me</li>
+                <li>Important</li>
+                <li>Recently Viewed</li>
+                <li>Deleted Items</li>
+            </ul>
+        </div>
+        <div class="verticalLinks">
+               <a href="{{ path('_user_new_welcome',{'parentId': parentId} ) }}" class="button">Back</a>
+            {# If a draft is present #}
+            {% if draftId is defined %}
+                <a href="{{ path('load_newWiki_draft',{'id': draftId,'parentId':parentId } ) }}" class="button">Draft Available</a>
+            {% endif %}
+        </div>
+        <br>
+        <div class="editorCont" >
+            <form id="wikiDoc" action="{{ path('create_wiki_doc',{'parentId':parentId}) }}"  method="post" {{ form_enctype(form) }}>
+
+                    {{ form_widget(form.docName,{ 'attr': {'placeholder':'Enter A Document Name','class': 'newWikiDocName' } }) }}
+                    {{ form_widget(form.docNo,{ 'attr': {'placeholder':'Enter A Document Number','class': 'newWikiDocName' } }) }}
+
+                    {{ form_widget(form.content) }}
+
+                </br>
+
+                <input id="submitButton" type="submit" value="Save">
+
+
+                {{ form_rest(form) }}
+                {{ form_errors(form) }}
+            </form>
+            <div id="output" ></div>
+
+        </div>
+
+    </div>
+    <div class="footer">
+
+        <div class="footertxt">
+            <a href="#">Ajitesh Raj</a>
+        </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/MyDrive/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+        <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+        <script src="{{ asset('bundles/MyDrive/js/index.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/MyDrive/js/editAutoSave.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+{% endblock %}

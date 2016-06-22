@@ -1,0 +1,22 @@
+Acme\MyDriveBundle\Entity\User:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: '100'
+            column: first_name
+        userName:
+            type: string
+            length: '100'
+            column: user_name
+        password:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

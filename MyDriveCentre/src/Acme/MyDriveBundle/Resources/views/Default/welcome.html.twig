@@ -1,0 +1,118 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('bundles/MyDrive/css/style.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="wrap">
+        <div class="logOut">
+            <a href="{{ path('logout' ) }}" class="button">Log Out</a>
+        </div>
+        <div id="regbar">
+            <h2>Welcome</h2>
+
+        </div>
+        <hr>
+        <div class="sideNav">
+            <ul class="navLinks">
+                <li>MyDrive</li>
+                <li>Shared With Me</li>
+                <li>Important</li>
+                <li>Recently Viewed</li>
+                <li>Deleted Items</li>
+            </ul>
+        </div>
+        <div class="verticalLinks">
+            <a href="#" id="uploadButton" class="button">Upload File</a>
+            <a href="{{ path('create_wiki_doc',{'parentId':parentId} ) }}" class="button">Create A wiki DoC</a>
+        </div>
+        {% if message is defined %}
+            <div class="notice">
+                    {{ message }}
+            </div>
+        {% endif %}
+
+        <br>
+
+        <div class="breadcrumb">
+            <a href="{{ path('_user_new_welcome',{'parentId' : null}) }}">Root</a>
+            {% for key,value in dirPath %}
+                <a href="{{ path('_user_new_welcome',{'parentId' : key}) }}">{{value}}</a>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="filesContainer">
+            <ul class="filesList">
+                <div class="newFolder">
+                    <form action="{{ path('create_new_folder',{'parentId':parentId} ) }}" method="post">
+                        <input type="text" name="folderName" placeholder="Create New Folder">
+                    </form>
+                </div>
+                <hr>
+                {% for folder in folders %}
+                    <li>
+
+                        <a href="{{ path('view_folder_doc', {'name':folder.folderName,'id': folder.id}) }}">
+                            <img src="{{ asset('bundles/MyDrive/Images/Folder.png') }}"  height="32" width="32">
+                            {{ folder.folderName  }}
+                        </a>
+                        <div style="float:right;">
+                            <a href="{{ path('delete_folder_doc', {'id': folder.id}) }}" title="Delete Folder" class="delete"></a>
+                        </div>
+                        <hr>
+                    </li>
+
+                {% endfor %}
+                {% for file in files %}
+                    <li>
+                        <a href="{{ path('view_file_doc', {'id': file.id}) }}">
+                            <img src="{{ asset('bundles/MyDrive/Images/file.png') }}"  height="32" width="32">
+                            {{ file.filename }}
+                        </a>
+                       <div style="float:right;">
+                        <a href="{{ path('delete_file_doc', {'id': file.id}) }}" class="eleteButton delete"></a>
+                       </div>
+                        <hr>
+                    </li>
+
+                {% endfor %}
+                {% for doc in docs %}
+                    <li>
+                        <a href="{{ path('view_wiki_doc', {'id': doc.id}) }}">
+                            <img src="{{ asset('bundles/MyDrive/Images/wiki.png') }}"  height="32" width="32">
+                            {{ doc.docName  }}
+                        </a>
+                        <div style="float:right;">
+                            <a href="{{ path('delete_wiki_doc', {'id': doc.id}) }}" class="eleteButton delete"></a>
+                        </div>
+                        <hr>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <form action="{{ path('_file_upload',{'parentId':parentId}) }}" class="fileUploadForm" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form.file) }}
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+    </form>
+
+    <div class="footer">
+
+        <div class="footertxt">
+            <a href="mailto:r_ajitesh@yahoo.com?Subject=Feedback For Drive central">Ajitesh Raj</a>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+        <script src="{{ asset('bundles/MyDrive/js/index.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+{% endblock %}

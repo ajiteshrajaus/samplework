@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('bundles/MyDrive/css/style.css') }}" />
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div id="wrap">
+        <div class="logOut">
+            <a href="{{ path('logout' ) }}" class="button">Log Out</a>
+        </div>
+
+        <div id="regbar">
+            <h2>View your Wiki here</h2>
+        </div>
+        <hr>
+        <div class="sideNav">
+            <ul class="navLinks">
+                <li>MyDrive</li>
+                <li>Shared With Me</li>
+                <li>Important</li>
+                <li>Recently Viewed</li>
+                <li>Deleted Items</li>
+            </ul>
+        </div>
+        <div class="verticalLinks">
+            {% if locked is defined %}
+                <a href="{{ path('unlock_wiki',{'id':doc.id} ) }}" class="button">Unlock Wiki</a>
+            {% endif %}
+            <a href="{{ path('_user_new_welcome',{'parentId':parentId} ) }}" class="button">Back</a>
+            <a href="{{ path('_edit_wiki_doc',{'id':doc.id} ) }}" class="button">Edit</a>
+        </div>
+        <br>
+        <div class="filesContainer" >
+            <h2>{{ doc.docName }}</h2>
+           <div class="wikiViewContent">
+                {% autoescape 'html' %}
+
+                     {{ doc.content|raw }}
+
+                {% endautoescape %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        <div class="footertxt">
+            <a href="mailto:r_ajitesh@yahoo.com?Subject=Feedback For Drive central">Ajitesh Raj</a>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('bundles/MyDrive/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+        <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+        <script src="{{ asset('bundles/MyDrive/js/index.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+{% endblock %}
